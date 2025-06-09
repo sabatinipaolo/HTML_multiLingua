@@ -6,7 +6,7 @@ from pathlib import Path
 INPUT_DIR = Path("src")
 OUTPUT_DIR = Path("_site")
 INCLUDE_DIR = Path("include")
-LINGUE = ["it", "en"]
+LINGUE = ["it", "en", "fr", "de", "es"]  # Lingue supportate
 
 ESTENSIONI_PROCESSABILI = {'.html'}  #PER FUTURE ESTENSIONI ?!
 
@@ -65,7 +65,13 @@ def processa_traduzioni(content, lingua):
         if match_lingua:
             return match_lingua.group(1).strip()
         else:
-            return "todo: tradurre"
+            # Cerca il testo in italiano come fallback
+            pattern_italiano = r'@it\{\s*(.*?)\s*}'
+            match_italiano = re.search(pattern_italiano, blocco, re.DOTALL)
+            if match_italiano:
+                return "TODO: manca la traduzione in "+lingua +" di : "+ match_italiano.group(1).strip()  
+            else:
+                return "TODO: ERRORE MANCA LINGUA e ITALIANO !! "
     
     # Sostituisce tutti i blocchi nel contenuto
     risultato = re.sub(pattern_blocco, sostituisci_blocco, content, flags=re.DOTALL)
