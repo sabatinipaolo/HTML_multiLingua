@@ -82,6 +82,15 @@ def processa_link(content, lingua):
     risultato = re.sub(r'@xx', f'{lingua}', content)
     return risultato
 
+def processa_page_path(content, lingua, path):
+
+    page_path = path.relative_to(OUTPUT_DIR / lingua ).as_posix()
+
+    risultato = re.sub(r'@pagepath', page_path, content)
+    return risultato
+
+
+
 def main():
     pulisci_cartella_output()
 
@@ -116,6 +125,7 @@ def main():
                     content = processa_include(input_path)
                     content = processa_traduzioni(content, lingua)
                     content = processa_link(content, lingua)
+                    content = processa_page_path(content, lingua, dst)
                     dst.write_text(content, encoding="utf-8")
 
         else:
