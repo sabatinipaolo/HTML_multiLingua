@@ -115,6 +115,22 @@ def processa_if_not_lingua(content, lingua):
     risultato = re.sub(pattern, sostituisci_blocco, content, flags=re.DOTALL)
     return risultato
 
+def processa_if_home_page(content, lingua,input_path):
+    # Cerca la sequenza esatta "@if-home-page" seguita da uno spazio e dalla lingua
+    pattern = r"@if-home-page"
+
+        
+    def sostituisci_blocco(match):
+        if input_path.relative_to(INPUT_DIR )== Path("xx") /  "index.html":
+            return "#"
+        else:
+            return f"/{lingua}/index.html"
+    
+
+    risultato = re.sub(pattern, sostituisci_blocco, content, flags=re.DOTALL)
+    return risultato
+
+
 
 def main():
     pulisci_cartella_output()
@@ -153,6 +169,7 @@ def main():
                     content = processa_page_path(content, lingua, dst)
                     content = processa_if_lingua(content, lingua)
                     content = processa_if_not_lingua(content, lingua)
+                    content = processa_if_home_page(content, lingua,input_path)
                     dst.write_text(content, encoding="utf-8")
 
         else:
