@@ -89,6 +89,31 @@ def processa_page_path(content, lingua, path):
     risultato = re.sub(r'@pagepath', page_path, content)
     return risultato
 
+def processa_if_lingua(content, lingua):
+    # Cerca la sequenza esatta "@if-lingua" seguita da uno spazio e dalla lingua
+    pattern = r"@if-lingua{(it|en|de|es|fr)}{(.*?)}"
+    
+    def sostituisci_blocco(match):
+
+        if match.group(1) != lingua:    
+            return ""
+        return match.group(2).strip()  # Ritorna il contenuto del blocco
+
+    risultato = re.sub(pattern, sostituisci_blocco, content, flags=re.DOTALL)
+    return risultato
+
+def processa_if_not_lingua(content, lingua):
+    # Cerca la sequenza esatta "@if-lingua" seguita da uno spazio e dalla lingua
+    pattern = r"@if-not-lingua{(it|en|de|es|fr)}{(.*?)}"
+    
+    def sostituisci_blocco(match):
+
+        if match.group(1) == lingua:    
+            return ""
+        return match.group(2).strip()  # Ritorna il contenuto del blocco
+
+    risultato = re.sub(pattern, sostituisci_blocco, content, flags=re.DOTALL)
+    return risultato
 
 
 def main():
@@ -126,6 +151,8 @@ def main():
                     content = processa_traduzioni(content, lingua)
                     content = processa_link(content, lingua)
                     content = processa_page_path(content, lingua, dst)
+                    content = processa_if_lingua(content, lingua)
+                    content = processa_if_not_lingua(content, lingua)
                     dst.write_text(content, encoding="utf-8")
 
         else:

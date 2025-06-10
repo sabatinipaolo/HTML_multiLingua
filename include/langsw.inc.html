@@ -2,34 +2,48 @@
     <div class="dropdown ms-2">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown"
             aria-expanded="false">
-            🌐 @{ @it{Lingua} @en{Language} @fr{Langue} @de{Sprache} @es{Idioma} @}
+            @if-lingua{it}{ 🇮🇹 Italiano}
+            @if-lingua{en}{ 🇬🇧 English}
+            @if-lingua{fr}{ 🇫🇷 Français}
+            @if-lingua{de}{ 🇩🇪 Deutsch}
+            @if-lingua{es}{ 🇪🇸 Español}
         </button>
         <ul class="dropdown-menu" aria-labelledby="langDropdown">
+            @if-not-lingua{it}{
             <li>
                 <a class="dropdown-item" href="/it/@pagepath">
                     🇮🇹 @{ @it{Italiano} @en{Italian} @fr{Italien} @de{Italienisch} @es{Italiano} @}
                 </a>
             </li>
+            }
+            @if-not-lingua{en}{
             <li>
                 <a class="dropdown-item" href="/en/@pagepath">
                     🇬🇧 @{ @it{Inglese} @en{English} @fr{Anglais} @de{Englisch} @es{Inglés} @}
                 </a>
             </li>
+            }
+            @if-not-lingua{fr}{
             <li>
                 <a class="dropdown-item" href="/fr/@pagepath">
                     🇫🇷 @{ @it{Francese} @en{French} @fr{Français} @de{Französisch} @es{Francés} @}
                 </a>
             </li>
+            }
+            @if-not-lingua{de}{
             <li>
                 <a class="dropdown-item" href="/de/@pagepath">
                     🇩🇪 @{ @it{Tedesco} @en{German} @fr{Allemand} @de{Deutsch} @es{Alemán} @}
                 </a>
             </li>
+            }
+            @if-not-lingua{es}{
             <li>
                 <a class="dropdown-item" href="/es/@pagepath">
                     🇪🇸 @{ @it{Spagnolo} @en{Spanish} @fr{Espagnol} @de{Spanisch} @es{Español} @}
                 </a>
             </li>
+            }
         </ul>
     </div>
 </nav>
