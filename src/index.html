@@ -5,28 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>default</title>
+    <script defer>
+        const linguaPagina = document.documentElement.lang; // Prende la lingua della pagina
+        const ultimaLinguaUsata = localStorage.getItem('ultima_lingua_usata');
+
+        if (ultimaLinguaUsata && ultimaLinguaUsata !== linguaPagina) {
+            window.location.replace("/" + ultimaLinguaUsata + "/");
+
+        } else {
+
+            window.location.replace("/" + linguaPagina + "/");
+        }
+
+    </script>
 </head>
 
 <body>
-    <header>
-        <h1>Pagina di default</h1>
-    </header>
-    <nav>
-        <li>
-            <ul>
-                <li><a href="it/index.html">Italiano</a></li>
-                <li><a href="en/index.html">Inglese</a></li>
-                <li><a href="de/index.html">Tedesco</a></li>
-                <li><a href="fr/index.html">Francese</a></li>
-                <li><a href="es/index.html">Spagnolo</a></li>
-            </ul>
-        </li>
-        </ul>
-    </nav>
-    <main>
-    </main>
-    <footer>
-    </footer>
+
 </body>
 
 </html>

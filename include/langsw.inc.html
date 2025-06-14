@@ -8,38 +8,38 @@
             @if-lingua{de}{ 🇩🇪 Deutsch}
             @if-lingua{es}{ 🇪🇸 Español}
         </button>
-        <ul class="dropdown-menu" aria-labelledby="langDropdown">
+        <ul id="lang_items" class="dropdown-menu" aria-labelledby="langDropdown">
             @if-not-lingua{it}{
             <li>
-                <a class="dropdown-item" href="/it/@pagepath">
+                <a class="dropdown-item" href="/it/@pagepath" data-ultima_lingua_usata="it">
                     🇮🇹 @{ @it{Italiano} @en{Italian} @fr{Italien} @de{Italienisch} @es{Italiano} @}
                 </a>
             </li>
             }
             @if-not-lingua{en}{
             <li>
-                <a class="dropdown-item" href="/en/@pagepath">
+                <a class="dropdown-item" href="/en/@pagepath" data-ultima_lingua_usata="en">
                     🇬🇧 @{ @it{Inglese} @en{English} @fr{Anglais} @de{Englisch} @es{Inglés} @}
                 </a>
             </li>
             }
             @if-not-lingua{fr}{
             <li>
-                <a class="dropdown-item" href="/fr/@pagepath">
+                <a class="dropdown-item" href="/fr/@pagepath" data-ultima_lingua_usata="fr">
                     🇫🇷 @{ @it{Francese} @en{French} @fr{Français} @de{Französisch} @es{Francés} @}
                 </a>
             </li>
             }
             @if-not-lingua{de}{
             <li>
-                <a class="dropdown-item" href="/de/@pagepath">
+                <a class="dropdown-item" href="/de/@pagepath" data-ultima_lingua_usata="de">
                     🇩🇪 @{ @it{Tedesco} @en{German} @fr{Allemand} @de{Deutsch} @es{Alemán} @}
                 </a>
             </li>
             }
             @if-not-lingua{es}{
             <li>
-                <a class="dropdown-item" href="/es/@pagepath">
+                <a class="dropdown-item" href="/es/@pagepath" data-ultima_lingua_usata="es">
                     🇪🇸 @{ @it{Spagnolo} @en{Spanish} @fr{Espagnol} @de{Spanisch} @es{Español} @}
                 </a>
             </li>
