@@ -5,7 +5,7 @@ if (ultimaLinguaUsata && ultimaLinguaUsata !== linguaPagina) {
         // reindirizza
         const url = window.location.pathname;
         const newUrl = url.replace(`/${linguaPagina}/`, `/${ultimaLinguaUsata}/`);
-        window.location.href = newUrl;
+        window.location.replace(newUrl);
 }
 
 
